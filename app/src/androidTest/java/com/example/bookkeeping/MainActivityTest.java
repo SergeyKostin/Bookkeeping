@@ -57,6 +57,7 @@ public class MainActivityTest {
 
         Thread.sleep(200);
         onView(withId(R.id.delete_oper_but)).perform(click());
+        onView(withId(R.id.delete_acc_but)).perform(click());
 
     }
 }

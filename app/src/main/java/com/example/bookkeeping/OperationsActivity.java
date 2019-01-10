@@ -15,6 +15,7 @@ public class OperationsActivity extends AppCompatActivity {
     ListView listView;
     Button crt_oper_but;
     Button delete_oper_but;
+    Button delete_acc_but;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +45,15 @@ public class OperationsActivity extends AppCompatActivity {
                 Controller.deleteOperation(Controller.getAccById(id));
                 Intent intent = new Intent(OperationsActivity.this, OperationsActivity.class);
                 intent.putExtra("id", id);
+                startActivity(intent);
+            }
+        });
+        delete_acc_but = findViewById(R.id.delete_acc_but);
+        delete_acc_but.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Controller.deleteAccount(id, id + 1);
+                Intent intent = new Intent(OperationsActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

@@ -9,15 +9,27 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="10dp">
+    <Button
+        android:id="@+id/crt_oper_but"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#81f422"
+        android:text="New operation" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp">
 
         <Button
-            android:id="@+id/crt_oper_but"
+            android:id="@+id/delete_acc_but"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#81f422"
-            android:text="New operation" />
+            android:backgroundTint="#ef3b3e"
+            android:text="Delete account" />
 
         <Button
             android:id="@+id/delete_oper_but"
