@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.bookkeeping.model.BankAccount;
+import com.example.bookkeeping.model.Controller;
 import com.example.bookkeeping.model.Operation;
 
 import java.util.ArrayList;
@@ -44,10 +45,7 @@ public class CreateOperActivity extends AppCompatActivity {
         spinAccountOn = findViewById(R.id.account_on);
         spinType = findViewById(R.id.crt_oper_type);
         spinCateg = findViewById(R.id.crt_oper_category);
-        ArrayList<String> accountListName = new ArrayList<>();
-        for (BankAccount bankAccount : MainActivity.listAccounts) {
-            accountListName.add(bankAccount.getName());
-        }
+        ArrayList<String> accountListName = Controller.getAccountListName();
         ArrayAdapter<String> adapterAccount = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, accountListName);
         ArrayAdapter<String> adapterType = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, types);
         ArrayAdapter<String> adapterCategory = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categorys);
@@ -85,7 +83,7 @@ public class CreateOperActivity extends AppCompatActivity {
         spinAccountOn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                userAccount = MainActivity.listAccounts.get(position);
+                userAccount = Controller.listAccounts.get(position);
                 positAcc = position;
             }
 
@@ -103,15 +101,12 @@ public class CreateOperActivity extends AppCompatActivity {
                 Operation operation = new Operation();
                 operation.setCategory(userCateg);
                 operation.setDescription(description.getText().toString());
-                operation.setFrom(MainActivity.listAccounts.get(id));
+                operation.setFrom(Controller.getAccById(id));
                 operation.setOn(userAccount);
                 operation.setType(userType);
                 int val = Integer.parseInt(value.getText().toString());
                 operation.setValue(val);
-                MainActivity.listAccounts.get(id).setBalance(MainActivity.listAccounts.get(id).getBalance() - val);
-                MainActivity.listAccounts.get(positAcc).setBalance(MainActivity.listAccounts
-                        .get(positAcc).getBalance() + val);
-                MainActivity.map.get(MainActivity.listAccounts.get(id)).add(operation);
+                Controller.addOperation(id,positAcc,operation);
                 Intent intent1 = new Intent(CreateOperActivity.this, MainActivity.class);
                 startActivity(intent1);
             }

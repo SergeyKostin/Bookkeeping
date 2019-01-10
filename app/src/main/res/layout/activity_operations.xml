@@ -6,12 +6,26 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/crt_oper_but"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#81f422"
-        android:text="New operation" />
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/crt_oper_but"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#81f422"
+            android:text="New operation" />
+
+        <Button
+            android:id="@+id/delete_oper_but"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#ef3b3e"
+            android:text="Delete operations" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

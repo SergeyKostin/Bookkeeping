@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.bookkeeping.model.BankAccount;
+import com.example.bookkeeping.model.Controller;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
@@ -31,7 +32,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                 String description = accDescript.getText().toString();
                 long balance = Long.parseLong(accBalance.getText().toString());
                 BankAccount bankAccount = new BankAccount(name,description,balance);
-                MainActivity.listAccounts.add(bankAccount);
+                Controller.addAccount(bankAccount);
                 Intent intent = new Intent(CreateAccountActivity.this,MainActivity.class);
                 startActivity(intent);
             }
